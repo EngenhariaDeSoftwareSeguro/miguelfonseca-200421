@@ -16,6 +16,8 @@ curl --request GET \
 ```
 
 # Musicas das Listas
+```
 curl --request GET \
 --url http://localhost:7100/music/1/items \
 --header 'authorization: Bearer user1'
+```
