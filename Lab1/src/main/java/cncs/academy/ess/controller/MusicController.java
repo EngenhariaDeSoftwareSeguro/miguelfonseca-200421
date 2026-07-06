@@ -29,12 +29,12 @@ public class MusicController {
         if (!checkOwnershipOfList(ctx, request.listId)) {
             return;
         }
-        Music music = musicService.createMusicItem(request.description, request.listId);
+        Music music = musicService.createMusicItem(request.album, request.artist, request.listId);
         ctx.status(200).json(music);
     }
 
     public void getMusicItem(Context ctx) {
-        int musicId = Integer.parseInt(ctx.pathParam("taskId"));
+        int musicId = Integer.parseInt(ctx.pathParam("musicId"));
         int listId = Integer.parseInt(ctx.pathParam("listId"));
         if (!checkOwnershipOfList(ctx, listId)) {
             return;
@@ -69,7 +69,7 @@ public class MusicController {
     }
 
     public void deleteMusicItem(Context context) {
-        int musicId = Integer.parseInt(context.pathParam("taskId"));
+        int musicId = Integer.parseInt(context.pathParam("musicId"));
         int listId = Integer.parseInt(context.pathParam("listId"));
         if (!checkOwnershipOfList(context, listId)) {
             return;

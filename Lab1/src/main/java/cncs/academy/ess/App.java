@@ -72,12 +72,13 @@ public class App {
           }
          */
         app.post("/music/item", musicController::createMusicItem);
-        /* GET /music/1/tasks */
-        app.get("/music/{listId}/tasks", musicController::getAllMusicItems);
+
+        /* GET /music/1/items */
+        app.get("/music/{listId}/items", musicController::getAllMusicItems);
         /* GET /music/1/tasks/1 */
-        app.get("/music/{listId}/tasks/{taskId}", musicController::getMusicItem);
+        app.get("/music/{listId}/items/{musicId}", musicController::getMusicItem);
         /* DELETE /music/1/tasks/1 */
-        app.delete("/music/{listId}/tasks/{taskId}", musicController::deleteMusicItem);
+        app.delete("/music/{listId}/items/{musicId}", musicController::deleteMusicItem);
 
         fillDummyData(userService, muSicListService, musicService);
     }
@@ -88,12 +89,10 @@ public class App {
             MusicService musicService) throws NoSuchAlgorithmException {
         userService.addUser("user1", "password1");
         userService.addUser("user2", "password2");
-        muSicListService.createMusicListItem("Shopping list", 1);
-        muSicListService.createMusicListItem("Other", 1);
-        musicService.createMusicItem("Bread", 1);
-        musicService.createMusicItem("Milk", 1);
-        musicService.createMusicItem("Eggs", 1);
-        musicService.createMusicItem("Cheese", 1);
-        musicService.createMusicItem("Butter", 1);
+        muSicListService.createMusicListItem("Favorites", 1);
+        muSicListService.createMusicListItem("New", 1);
+        musicService.createMusicItem("Epica", "Aspiria",1);
+        musicService.createMusicItem("Korn", "Follow The Leader",1);
+        musicService.createMusicItem("Queen", "Inuendo",1);
     }
 }

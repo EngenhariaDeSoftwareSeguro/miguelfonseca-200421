@@ -18,11 +18,11 @@ public class MusicService {
         this.repoMusicListRepository = repoMusicListRepository;
     }
 
-    public Music createMusicItem(String description, int listId) {
+    public Music createMusicItem(String album, String artists, int listId) {
         if (repoMusicListRepository.findById(listId) == null) {
             throw new IllegalArgumentException("List not found");
         }
-        Music music = new Music(description, listId);
+        Music music = new Music(album, artists, listId);
         int id = repoMusicRepository.save(music);
         music.setId(id);
         return music;
