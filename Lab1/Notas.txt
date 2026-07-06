@@ -1,0 +1,25 @@
+mvn package
+java -jar target/musiclist-phase1-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+
+curl http://localhost:7100/musiclist -H "Authorization: Bearer user1"
+
+curl -X POST http://localhost:7100/login -H "Content-Type: application/json" -d "{\"username\":\"user1\",\"password\":\"password1\"}"
+
+
+Users
+- POST /user — create user (no auth required)
+- GET /user/{userId} — get user by id
+- DELETE /user/{userId} — delete user
+- POST /login — log in, returns Bearer <username> token (no auth required)
+
+Music lists
+- POST /musiclist — create a list ({"listName": "..."}), owned by the authenticated user
+- GET /musiclist — get all lists owned by the authenticated user
+- GET /musiclist/{listId} — get one list (must own it)
+
+Music items
+- POST /music/item — create an item ({"album": "...", "artist": "...", "listId": N}), must own the list
+- GET /music/{listId}/items — get all items in a list, must own the list
+- GET /music/{listId}/items/{musicId} — get one item, must own the list
+- DELETE /music/{listId}/items/{musicId} — delete an item, must own the list
