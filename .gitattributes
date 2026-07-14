@@ -1,0 +1,11 @@
+# Normalize all text files to LF in the repo, auto-detect what's text
+* text=auto eol=lf
+
+# Force these to stay CRLF if some Windows tool needs it (optional)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Mark true binaries so git never touches them
+*.png binary
+*.jpg binary
+*.pdf binary
